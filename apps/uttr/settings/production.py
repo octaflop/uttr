@@ -4,7 +4,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'uttr',
-        'PASSWORD': 'uttr_pass',
+        'PASSWORD': 'F;r6Tv{/',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
