@@ -7,3 +7,4 @@ DATABASES = {
     }
 }
 
+WSGI_APPLICATION = 'uttr.wsgi.dev.application'
