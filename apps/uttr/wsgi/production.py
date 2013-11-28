@@ -15,18 +15,21 @@ framework.
 """
 
 import os
-import djcelery
+try:
+    import djcelery
+    djcelery.setup_loader()
+except ImportError:
+    pass
 
 try:
     import newrelic.agent
     newrelic.agent.initialize('/etc/newrelic.ini', 'production')
+    application = newrelic.agent.wsgi_application()(application)
 except ImportError:
     pass
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "uttr.settings.production")
-djcelery.setup_loader()
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 
-application = newrelic.agent.wsgi_application()(application)
