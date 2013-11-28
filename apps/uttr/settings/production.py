@@ -7,7 +7,8 @@ DB_PASS = environ['DB_PASS']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'uttr',
+        'NAME': 'uttrdb',
+        'USER': 'uttr',
         'PASSWORD': DB_PASS,
         'HOST': '127.0.0.1',
         'PORT': '5432',
