@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 WSGI config for uttr project.
 
@@ -15,18 +16,8 @@ framework.
 """
 
 import os
-import djcelery
 
-try:
-    import newrelic.agent
-    newrelic.agent.initialize('/etc/newrelic.ini', 'production')
-except ImportError:
-    pass
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "uttr.settings.production")
-djcelery.setup_loader()
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "uttr.settings.local")
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
-
-application = newrelic.agent.wsgi_application()(application)
