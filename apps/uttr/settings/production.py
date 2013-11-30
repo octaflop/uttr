@@ -2,14 +2,14 @@ from .base import *
 
 from os import environ
 
-DB_PASS = environ['DB_PASS']
+#DB_PASS = environ['DB_PASS']
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'uttrdb',
         'USER': 'uttr',
-        'PASSWORD': DB_PASS,
+        #'PASSWORD': DB_PASS,
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -17,3 +17,7 @@ DATABASES = {
 
 WSGI_APPLICATION = 'uttr.wsgi.production'
 
+try:
+    from local_settings import *
+except:
+    pass
