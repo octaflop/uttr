@@ -28,3 +28,4 @@ c2/
 *.sublime-project
 *.sublime-workspace
 *.scssc
+certs/
