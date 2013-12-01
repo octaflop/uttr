@@ -90,5 +90,4 @@ class UttrUserAdmin(UserAdmin):
     )
 
 # Register the new UttrUserAdmin
-admin.site.register(UttrUser)
-#admin.site.register(UttrUser, UttrUserAdmin)
+admin.site.register(UttrUser, UttrUserAdmin)
