@@ -19,7 +19,7 @@ class UttrUserCreationForm(forms.ModelForm):
 
     class Meta:
         model = UttrUser
-        fields = ("email", "first_name", "last_name")
+        fields = ("email", "first_name", "last_name", "role")
 
     def clean_password2(self):
         # Check that the two password entries match.
@@ -63,8 +63,9 @@ class UttrUserAdmin(UserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ("email", "is_staff", "first_name", "last_name")
-    list_filter = ("is_staff", "is_superuser",
+    list_display = ("email", "is_staff", "role", "first_name", "last_name")
+    list_filter = ("role",
+                    "is_staff", "is_superuser",
                     "is_active", "groups")
     search_fields = ("email", "first_name", "last_name")
     ordering = ("email",)
@@ -74,7 +75,9 @@ class UttrUserAdmin(UserAdmin):
         ("Personal info", {"fields":
                 ("first_name",
                 "last_name")}),
-        ("Permissions", {"fields": ("is_active",
+        ("Permissions", {"fields": (
+                "role",
+                "is_active",
                 "is_staff",
                 "is_superuser",
                 "groups",
