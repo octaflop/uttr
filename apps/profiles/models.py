@@ -26,7 +26,8 @@ class UttrUserManagerManager(BaseUserManager):
         """
         Creates and saves a superuser with the given email and password
         """
-        user = self.create_user(email,
+        user = self.create_user(
+            email,
             password=password
         )
         user.is_admin = True
