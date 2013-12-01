@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from .models import UttrUser
+from profiles.models import UttrUser
 
 
 class UttrUserCreationForm(forms.ModelForm):
@@ -90,4 +90,5 @@ class UttrUserAdmin(UserAdmin):
     )
 
 # Register the new UttrUserAdmin
-admin.site.register(UttrUser, UttrUserAdmin)
+admin.site.register(UttrUser)
+#admin.site.register(UttrUser, UttrUserAdmin)
