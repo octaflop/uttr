@@ -90,3 +90,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = "profiles.UttrUser"
+
+STATIC_ROOT = (
+    os.path.join(BASE_DIR, "static"),
+)
