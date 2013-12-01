@@ -41,6 +41,12 @@ class UttrUser(AbstractBaseUser, PermissionsMixin):
     Default user for uttr profiles.
     Requires email confirmation to activate
     """
+    ROLE_CHOICES = (
+        ("admin", "Administrator"),
+        ("author", "Author"),
+        ("reader", "Reader"),
+    )
+
     email = models.EmailField(
         verbose_name=u'email address',
         max_length=255,
@@ -55,6 +61,12 @@ class UttrUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(
         max_length=255,
         blank=True
+        )
+
+    role = models.CharField(
+        max_length=7,
+        choices=ROLE_CHOICES,
+        default=ROLE_CHOICES[2][0]
         )
 
     USERNAME_FIELD = "email"
