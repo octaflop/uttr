@@ -2,6 +2,6 @@
 
 from django.conf.urls import patterns, include, url
 
-patterns = patterns('profiles.views.home.index',
+urlpatterns = patterns('profiles.views.home',
     url(r'^$', 'profile_home', name='home'),
 )
