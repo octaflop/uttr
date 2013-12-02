@@ -1,0 +1,17 @@
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{% url 'profiles:home' %}">Digital Textbook Study</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="{% if home_active %}active{% endif %}"><a href="{% url 'profiles:home' %}"><span class='glyphicon glyphicon-home'></span></a></li>
+        <li class="{% if compose_active %}active{% endif %}"><a href="{% url 'profiles:home' %}"><span class='glyphicon glyphicon-pencil'></span> Compose new entry</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{% url 'profiles:logout' %}">Logout</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
