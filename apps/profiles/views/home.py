@@ -2,6 +2,10 @@
 
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, get_object_or_404, redirect
+
+from django.contrib.auth import logout
+from django.contrib import messages
+
 from profiles.forms import LoginForm
 from profiles.models import UttrUser
 
@@ -32,3 +36,11 @@ def index(request):
     ctx = {}
 
     return render(request, 'profiles/index.html', ctx)
+
+def logout_view(request):
+    user = request.user
+
+    logout(request)
+    messages.success(request, "%s has successfuly logged out" % user.email)
+
+    return redirect(reverse('home'))

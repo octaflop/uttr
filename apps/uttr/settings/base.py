@@ -62,6 +62,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'uttr.urls'
 
+LOGOUT_URL = '/profiles/logout/'
+
 WSGI_APPLICATION = 'uttr.wsgi.application'
 
 # Database
