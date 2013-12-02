@@ -23,7 +23,10 @@ DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '.digitaltextbookstudy.com',
+    '.digitaltextbookstudy.com.',
+]
 
 # Application definition
 
