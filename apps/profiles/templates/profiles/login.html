@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-<form class="form-signin" action="{% url 'home' %}" method="">
+<form class="form-signin" action="{% url 'home' %}" method="POST">
   <h2 class="form-signin-heading">Please sign in</h2>
   {% csrf_token %}
   {{ login_form.email.errors }}
