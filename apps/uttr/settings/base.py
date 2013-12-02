@@ -21,7 +21,7 @@ SECRET_KEY = 'ewq&#i&8%axz*fmq75$q@nuf5xg_#81@tq9_fo8yp980v+nuih'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = []
 
@@ -91,4 +91,4 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = "profiles.UttrUser"
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, "..", "..", "globalstatic")

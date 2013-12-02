@@ -29,4 +29,3 @@ c2/
 *.sublime-workspace
 *.scssc
 certs/
-apps/uttr/static
