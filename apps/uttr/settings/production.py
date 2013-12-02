@@ -17,6 +17,10 @@ DATABASES = {
 
 WSGI_APPLICATION = 'uttr.wsgi.production'
 
+DEBUG = False
+
+TEMPLATE_DEBUG = DEBUG
+
 try:
     from local_settings import *
 except:
