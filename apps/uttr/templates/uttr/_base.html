@@ -21,6 +21,12 @@
 
   </head>
   <body>
+    {% block navbar %}
+      {% if user.is_authenticated %}
+        {% include 'uttr/navbar_includes/navbar.html' %}
+      {% endif %}
+    {% endblock %}
+
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
