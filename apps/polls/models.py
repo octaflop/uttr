@@ -3,9 +3,16 @@
 
 
 from django.db import models
+from uttr.models.mixins import TimestampMixin
 
-class PollQuestion(models.Model):
-	pass
 
-class Poll(models.Model):
-	pass
+class PollQuestion(TimestampMixin):
+    pass
+
+
+class PollVote(TimestampMixin):
+    pass
+
+
+class Poll(TimestampMixin):
+    pass
