@@ -42,6 +42,8 @@ DJANGO_APPS = (
 LOCAL_APPS = (
     'uttr', # metapp for settings
 
+    'blog',
+    'polls',
     'profiles',
 )
 
