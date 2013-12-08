@@ -2,40 +2,11 @@
 
 from django.db import models
 
+from profiles.managers import UttrUserManager
 from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser, PermissionsMixin
+    AbstractBaseUser, PermissionsMixin
 )
 
-class UttrUserManagerManager(BaseUserManager):
-    def create_user(self, email,
-                        password=None):
-        if not email:
-            msg = "Users must have a valid email address"
-            raise ValueError(msg)
-
-        user = self.model(
-            email = UttrUserManagerManager.normalize_email(email),
-        )
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
-
-    def create_superuser(self,
-                            email,
-                            password):
-        """
-        Creates and saves a superuser with the given email and password
-        """
-        user = self.create_user(
-            email,
-            password=password
-        )
-        user.role = "admin"
-        user.is_admin = True
-        user.is_staff = True
-        user.is_superuser = True
-        user.save(using=self._db)
-        return user
 
 class UttrUser(AbstractBaseUser, PermissionsMixin):
     """
@@ -76,7 +47,7 @@ class UttrUser(AbstractBaseUser, PermissionsMixin):
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
 
-    objects = UttrUserManagerManager()
+    objects = UttrUserManager()
 
     def get_full_name(self):
         # The user is identified by their email and first name
