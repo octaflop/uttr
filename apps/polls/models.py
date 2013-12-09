@@ -5,6 +5,8 @@
 from django.db import models
 from uttr.models.mixins import TimestampMixin
 
+from profiles.models import UttrUser
+
 
 class PollQuestion(TimestampMixin):
     question = models.TextField()
@@ -18,7 +20,7 @@ class PollAnswer(TimestampMixin):
 
 
 class PollVote(TimestampMixin):
-    voter = models.ForeignKey('profiles.UttrUser')
+    voter = models.ForeignKey(UttrUser)
 
 
 class Poll(TimestampMixin):
