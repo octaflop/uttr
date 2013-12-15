@@ -27,3 +27,7 @@ class ModNotes(TimestampMixin):
     post = models.ForeignKey(BlogPost)
     notes = models.TextField(blank=True, null=True)
     mod = models.ForeignKey('profiles.UttrUser', blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = u'Mod Notes'
+        verbose_name = u'Mod Note'
