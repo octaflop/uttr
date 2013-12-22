@@ -4,7 +4,7 @@ from django.contrib import admin
 from blog.models import BlogPost, Source, ModNotes
 
 class BlogPostAdmin(admin.ModelAdmin):
-    pass
+    prepopulated_fields = {'slug': ("title",)}
 
 class SourceAdmin(admin.ModelAdmin):
     pass

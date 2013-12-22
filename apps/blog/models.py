@@ -9,6 +9,7 @@ from polls.models import Poll
 
 class BlogPost(TimestampMixin):
     title = models.CharField(max_length=250)
+    slug = models.SlugField(max_length=40, default='')
     author = models.ForeignKey(UttrUser)
     entry = models.TextField()
     tags = models.CharField(max_length=500, blank=True)
@@ -17,10 +18,16 @@ class BlogPost(TimestampMixin):
     source = models.ForeignKey("Source", blank=True, null=True)
     poll = models.ForeignKey(Poll, blank=True, null=True)
 
+    def __unicode__(self):
+        return self.title
+
 
 class Source(models.Model):
     url = models.URLField(blank=True)
     author = models.CharField(max_length=250, blank=True)
+
+    def __unicode__(self):
+        return "%s (%s)" % (self.author, self.url[:35])
 
 
 class ModNotes(TimestampMixin):
