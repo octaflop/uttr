@@ -1,5 +1,16 @@
 {% extends 'uttr/_base.html' %}
+{% load staticfiles %}
 
 {% block body %}
 	<h1>{{ page.title }}</h1>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'admin/js/urlify.js' %}"></script>
+<script type="text/javascript">
+document.getElementById("id_title").onkeyup = function() {
+    var e = document.getElementById("id_slug");
+    if (!e._changed) { e.value = URLify(document.getElementById("id_title").value, 50); }
+}
+</script>
 {% endblock %}
