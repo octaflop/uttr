@@ -10,6 +10,7 @@ def create(request):
     Blog creation templates
     """
     ctx = {}
+    ctx['compose_active'] = True
     template_name = 'blog/manage/create.html'
 
     blog_form = BlogForm()
