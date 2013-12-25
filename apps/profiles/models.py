@@ -19,6 +19,16 @@ class UttrUser(AbstractBaseUser, PermissionsMixin):
         ("reader", "Reader"),
     )
 
+    USER_TYPE = (
+        ("student", "Student"),
+        ("educator", "Educator"),
+        ("highered", "Higher ED"),
+        ("tech", "technology"),
+        ("author", "Author"),
+        ("publisher", "Publisher"),
+        ("other", "Other"),
+    )
+
     email = models.EmailField(
         verbose_name=u'email address',
         max_length=255,
@@ -40,6 +50,14 @@ class UttrUser(AbstractBaseUser, PermissionsMixin):
         choices=ROLE_CHOICES,
         default=ROLE_CHOICES[2][0]
         )
+
+    category = models.CharField(
+        max_length=10,
+        choices=USER_TYPE,
+        default="other"
+        )
+
+    notes = models.TextField(blank=True)
 
     USERNAME_FIELD = "email"
 
