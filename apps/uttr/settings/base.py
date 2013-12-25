@@ -94,6 +94,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, "..", "..", "globalstatic")
 # CKEDITOR Options
 CKEDITOR_UPLOAD_PATH = os.path.join(BASE_DIR, "..", "..", "ckeditor-uploads")
 
+CKEDITOR_UPLOAD_PREFIX = "https://digitaltextbookstudy.com/ckuploads"
+
 # CKEDITOR_RESTRICT_BY_USER = True
 
 CKEDITOR_CONFIGS = {
