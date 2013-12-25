@@ -18,6 +18,8 @@ class BlogPostAdminForm(forms.ModelForm):
 
 class BlogPostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ("title",)}
+    list_display = ('title', 'post_type', 'status',)
+    list_filter = ('title', 'post_type', 'status',)
     form = BlogPostAdminForm
 
 class SourceAdmin(admin.ModelAdmin):
