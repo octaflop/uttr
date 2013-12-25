@@ -31,6 +31,8 @@ class BlogPost(TimestampMixin):
     status = models.CharField(choices=POST_STATUS, max_length=10, default='draft')
     post_type = models.CharField(choices=POST_TYPE, max_length=10, default='disc')
 
+    is_poll = models.BooleanField(default=False)
+
     poll = models.ForeignKey(Poll, blank=True, null=True)
     parent_post = models.ForeignKey('self', blank=True, null=True)
 
