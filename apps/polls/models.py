@@ -48,5 +48,5 @@ class PostPoll(TimestampMixin):
     answer = models.CharField(max_length=8, choices=VOTE_CHOICES, default='unread')
 
     def __unicode__(self):
-        return u"%s answered %s on %s" % (self.answeree.first_name, self.answer, self.entry)
+        return u"%s (ID:%s) answered %s on %s" % (self.answeree.first_name, self.answeree.id, self.answer, self.entry)
 
