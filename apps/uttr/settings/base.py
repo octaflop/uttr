@@ -104,6 +104,7 @@ CKEDITOR_CONFIGS = {
             ['TextColor', 'BGColor'],
             ['Smiley', 'SpecialChar'], ['Source'],
         ],
+    },
     # For reference
     'full': {
         'toolbar': [
@@ -112,5 +113,5 @@ CKEDITOR_CONFIGS = {
             ['TextColor', 'BGColor'],
             ['Smiley', 'SpecialChar'], ['Source'],
         ],
-    },
+    }
 }

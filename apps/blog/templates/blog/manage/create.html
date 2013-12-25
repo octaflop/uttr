@@ -3,6 +3,7 @@
 {% block body %}
   <h3>Blog Creation</h3>
   <form role="form" action="{% url 'blog:manage:create' %}" method='POST'>
+    {{ blog_form.media }}
     {% csrf_token %}
     {% for field in blog_form %}
       <div class='form-group'>

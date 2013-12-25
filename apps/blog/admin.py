@@ -8,6 +8,7 @@ from ckeditor.widgets import CKEditorWidget
 
 from blog.models import BlogPost, Source, ModNotes
 
+
 class BlogPostAdminForm(forms.ModelForm):
     entry = forms.CharField(widget=CKEditorWidget())
     draft = forms.CharField(widget=CKEditorWidget())
