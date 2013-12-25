@@ -9,7 +9,7 @@ class BlogForm(forms.ModelForm):
     """
     class Meta:
         model = BlogPost
-        exclude = ('publish_date', 'source', 'poll', 'author',)
+        exclude = ('publish_date', 'source', 'poll', 'author', 'is_poll')
 
     def __init__(self, *args, **kwargs):
         super(BlogForm, self).__init__(*args, **kwargs)
