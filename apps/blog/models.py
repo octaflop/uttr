@@ -7,19 +7,49 @@ from uttr.models.mixins import TimestampMixin
 from profiles.models import UttrUser
 from polls.models import Poll
 
+POST_STATUS = (
+    ('draft', 'Private'),
+    ('posted', 'Posted'),
+    ('redacted', 'Redacted'),
+)
+
+POST_TYPE = (
+    ('lib', 'Library'),
+    ('disc', 'Discussion'),
+    ('pm', 'Private Message'),
+)
+
 class BlogPost(TimestampMixin):
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=40, default='')
     author = models.ForeignKey(UttrUser)
     entry = models.TextField()
+    draft = models.TextField()
+    mod_notes = models.TextField()
     tags = models.CharField(max_length=500, blank=True)
     publish_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(choices=POST_STATUS, max_length=10, default='draft')
+    post_type = models.CharField(choices=POST_TYPE, max_length=10, default='disc')
 
     source = models.ForeignKey("Source", blank=True, null=True)
     poll = models.ForeignKey(Poll, blank=True, null=True)
+    parent_post = models.ForeignKey('self', blank=True, null=True)
+
 
     def __unicode__(self):
         return self.title
+
+    @property
+    def is_child(self):
+        if self.parent_post:
+            return True
+        return False
+
+    @property
+    def replys_to(self):
+        if self.parent_post:
+            return parent_post
+        return False
 
 
 class Source(models.Model):
