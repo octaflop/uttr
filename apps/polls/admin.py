@@ -3,7 +3,7 @@
 
 from django.contrib import admin
 
-from polls.models import PollQuestion, PollAnswer, Poll
+from polls.models import PollQuestion, PollAnswer, Poll, PostPoll
 
 class PollQuestionInline(admin.TabularInline):
     model = PollQuestion
@@ -19,3 +19,4 @@ class PollAdmin(admin.ModelAdmin):
 admin.site.register(PollQuestion)
 admin.site.register(PollAnswer)
 admin.site.register(Poll, PollAdmin)
+admin.site.register(PostPoll)
