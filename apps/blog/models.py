@@ -23,9 +23,9 @@ class BlogPost(TimestampMixin):
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=40, default='')
     author = models.ForeignKey(UttrUser)
-    entry = models.TextField()
+    entry = models.TextField(blank=True)
     draft = models.TextField()
-    mod_notes = models.TextField()
+    mod_notes = models.TextField(blank=True)
     tags = models.CharField(max_length=500, blank=True)
     publish_date = models.DateTimeField(blank=True, null=True)
     status = models.CharField(choices=POST_STATUS, max_length=10, default='draft')
@@ -34,7 +34,6 @@ class BlogPost(TimestampMixin):
     source = models.ForeignKey("Source", blank=True, null=True)
     poll = models.ForeignKey(Poll, blank=True, null=True)
     parent_post = models.ForeignKey('self', blank=True, null=True)
-
 
     def __unicode__(self):
         return self.title
