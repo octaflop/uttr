@@ -24,9 +24,9 @@
   </head>
   <body>
     {% block navbar %}
-      {% if user.is_authenticated %}
+      {# {% if user.is_authenticated %} #}
         {% include 'uttr/navbar_includes/usernavbar.html' %}
-      {% endif %}
+      {# {% endif %} #}
     {% endblock %}
 
     {% if messages %}
