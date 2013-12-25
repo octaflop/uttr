@@ -2,6 +2,7 @@
 # models.py
 
 from django.db import models
+from django.core.urlresolvers import reverse
 from uttr.models.mixins import TimestampMixin
 
 from profiles.models import UttrUser
@@ -35,6 +36,15 @@ class BlogPost(TimestampMixin):
 
     poll = models.ForeignKey(Poll, blank=True, null=True)
     parent_post = models.ForeignKey('self', blank=True, null=True)
+
+    def get_absolute_url(self):
+        if self.post_type == 'lib':
+            return reverse('blog:library:view', kwargs={'id': str(self.id)})
+        elif self.post_type == 'disc':
+            return reverse('blog:discussion:view', kwargs={'id': str(self.id)})
+        elif self.post_type == 'pm':
+            return reverse('blog:pm:view', kwargs={'id': str(self.id)})
+        return
 
     def __unicode__(self):
         return self.title

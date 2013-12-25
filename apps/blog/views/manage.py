@@ -7,10 +7,12 @@ from profiles.models import UttrUser
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from blog.forms import BlogForm
 from blog.models import BlogPost
 
+@login_required
 def create(request):
     """
     Blog creation templates

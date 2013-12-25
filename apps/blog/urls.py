@@ -6,6 +6,24 @@ managepatterns = patterns('blog.views.manage',
 	url(r'^create$', 'create', name='create'),
 )
 
+librarypatterns = patterns('blog.views.list',
+    url(r'^$', 'library_list', name='index'),
+    url(r'^(?P<id>\d+)$', 'library_entry', name='view'),
+)
+
+discussionpatterns = patterns('blog.views.list',
+    url(r'^$', 'discussion_list', name='index'),
+    url(r'^(?P<id>\d+)$', 'discussion_entry', name='view'),
+)
+
+pmpatterns = patterns('blog.views.list',
+    url(r'^$', 'pm_list', name='index'),
+    url(r'^(?P<id>\d+)$', 'pm_entry', name='view'),
+)
+
 urlpatterns = patterns('',
-	url(r'^manage/', include(managepatterns, namespace='manage'))
+	url(r'^manage/', include(managepatterns, namespace='manage')),
+    url(r'^library/', include(librarypatterns, namespace='library')),
+    url(r'^discussion/', include(discussionpatterns, namespace='discussion')),
+    url(r'^messages/', include(pmpatterns, namespace='pm'))
 )
