@@ -49,6 +49,7 @@ LOCAL_APPS = (
 
 THIRD_PARTY_APPS = (
     'south',
+    'ckeditor',
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
@@ -89,3 +90,27 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = "profiles.UttrUser"
 
 STATIC_ROOT = os.path.join(BASE_DIR, "..", "..", "globalstatic")
+
+# CKEDITOR Options
+CKEDITOR_UPLOAD_PATH = os.path.join(BASE_DIR, "..", "..", "ckeditor-uploads")
+
+CKEDITOR_RESTRICT_BY_USER = True
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': [
+            ['Styles', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Image',],
+            ['TextColor', 'BGColor'],
+            ['Smiley', 'SpecialChar'], ['Source'],
+        ],
+    # For reference
+    'full': {
+        'toolbar': [
+            ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Image', 'Flash', 'Table', 'HorizontalRule'],
+            ['TextColor', 'BGColor'],
+            ['Smiley', 'SpecialChar'], ['Source'],
+        ],
+    },
+}
