@@ -6,3 +6,5 @@
 
 ## Production Settings
 
+Uses `ckeditor`
+
