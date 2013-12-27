@@ -50,6 +50,7 @@ LOCAL_APPS = (
 THIRD_PARTY_APPS = (
     'south',
     'ckeditor',
+    'taggit',
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
