@@ -5,6 +5,8 @@ from django.db import models
 from django.core.urlresolvers import reverse
 from uttr.models.mixins import TimestampMixin
 
+from taggit.managers import TaggableManager
+
 from profiles.models import UttrUser
 from polls.models import Poll
 
@@ -27,7 +29,7 @@ class BlogPost(TimestampMixin):
     entry = models.TextField(blank=True)
     draft = models.TextField()
     mod_notes = models.TextField(blank=True)
-    tags = models.CharField(max_length=500, blank=True)
+    tags = TaggableManager()
     publish_date = models.DateTimeField(blank=True, null=True)
     status = models.CharField(choices=POST_STATUS, max_length=10, default='draft')
     post_type = models.CharField(choices=POST_TYPE, max_length=10, default='disc')
