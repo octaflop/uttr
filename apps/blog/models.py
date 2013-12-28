@@ -10,19 +10,19 @@ from taggit.managers import TaggableManager
 from profiles.models import UttrUser
 from polls.models import Poll
 
-POST_STATUS = (
-    ('draft', 'Private'),
-    ('posted', 'Posted'),
-    ('redacted', 'Redacted'),
-)
-
-POST_TYPE = (
-    ('lib', 'Library'),
-    ('disc', 'Discussion'),
-    ('pm', 'Private Message'),
-)
 
 class BlogPost(TimestampMixin):
+    POST_STATUS = (
+        ('draft', 'Private'),
+        ('posted', 'Posted'),
+        ('redacted', 'Redacted'),
+    )
+    POST_TYPE = (
+        ('lib', 'Library'),
+        ('disc', 'Discussion'),
+        ('pm', 'Private Message'),
+    )
+
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=40, default='')
     author = models.ForeignKey(UttrUser)

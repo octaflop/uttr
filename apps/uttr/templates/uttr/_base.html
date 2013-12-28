@@ -45,6 +45,12 @@
     {% endblock %}
     </div><!-- /container -->
 
+    <footer class="navbar-collapse collapse">
+    {% block footer %}
+        {% include 'uttr/includes/footer.html' %}
+    {% endblock %}
+    </footer>
+
     {% block extra_js %}
     {% endblock %}
     <script type="text/javascript" src="{% static 'bower_components/jquery/jquery.min.js' %}"></script>

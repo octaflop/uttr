@@ -3,7 +3,7 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 
 managepatterns = patterns('blog.views.manage',
-	url(r'^create$', 'create', name='create'),
+    url(r'^create$', 'create', name='create'),
 )
 
 librarypatterns = patterns('blog.views.list',
@@ -22,7 +22,7 @@ pmpatterns = patterns('blog.views.list',
 )
 
 urlpatterns = patterns('',
-	url(r'^manage/', include(managepatterns, namespace='manage')),
+    url(r'^manage/', include(managepatterns, namespace='manage')),
     url(r'^library/', include(librarypatterns, namespace='library')),
     url(r'^discussion/', include(discussionpatterns, namespace='discussion')),
     url(r'^messages/', include(pmpatterns, namespace='pm'))

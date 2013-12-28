@@ -45,6 +45,7 @@ LOCAL_APPS = (
     'blog',
     'polls',
     'profiles',
+    'pages',
 )
 
 THIRD_PARTY_APPS = (
