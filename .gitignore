@@ -16,6 +16,7 @@ local_s3_settings.py
 .buildpath
 globalstatic/
 /media/
+/static/
 c2/
 /templates/corporate-old/
 /fontconfig/
