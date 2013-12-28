@@ -103,7 +103,7 @@ CKEDITOR_UPLOAD_PREFIX = "https://digitaltextbookstudy.com/ckuploads"
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': [
-            ['Styles', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Link','Styles', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
             ['Image',],
             ['TextColor', 'BGColor'],
             ['Smiley', 'SpecialChar'], ['Source'],
