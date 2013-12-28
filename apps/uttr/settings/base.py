@@ -84,14 +84,15 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-
-STATIC_URL = '/static/'
-
 AUTH_USER_MODEL = "profiles.UttrUser"
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.6/howto/static-files/
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
 STATIC_ROOT = os.path.join(BASE_DIR, "..", "..", "globalstatic")
+MEDIA_ROOT = os.path.join(BASE_DIR, "..", "..", "media")
 
 # CKEDITOR Options
 CKEDITOR_UPLOAD_PATH = os.path.join(BASE_DIR, "..", "..", "ckeditor-uploads")
@@ -104,7 +105,7 @@ CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': [
             ['Link','Styles', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
-            ['Image',],
+            ['Image','Files',],
             ['TextColor', 'BGColor'],
             ['Smiley', 'SpecialChar'], ['Source'],
         ],
