@@ -1,0 +1,21 @@
+/* line 6, ../sass/main.sass */
+html, body {
+  height: 100%;
+}
+
+/* line 9, ../sass/main.sass */
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -134px;
+  /* Pad bottom by footer height */
+  padding: 0 0 134px;
+}
+
+/* line 18, ../sass/main.sass */
+footer {
+  height: 134px;
+  background-color: whitesmoke;
+  padding: 0.5em;
+}

@@ -23,6 +23,7 @@
 
   </head>
   <body>
+    <div id='wrap'>
     {% block navbar %}
       {# {% if user.is_authenticated %} #}
         {% include 'uttr/navbar_includes/usernavbar.html' %}
@@ -45,10 +46,13 @@
     {% endblock %}
     </div><!-- /container -->
 
+    </div>
     <footer class="navbar-collapse collapse">
-    {% block footer %}
-        {% include 'uttr/includes/footer.html' %}
-    {% endblock %}
+        <div class='container'>
+        {% block footer %}
+            {% include 'uttr/includes/footer.html' %}
+        {% endblock %}
+        </div>
     </footer>
 
     {% block extra_js %}
