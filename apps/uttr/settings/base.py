@@ -92,7 +92,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "..", "..", "globalstatic")
-MEDIA_ROOT = os.path.join(BASE_DIR, "..", "..", "media")
+MEDIA_ROOT = os.path.normpath(os.path.join(BASE_DIR, "..", "..", "media"))
 
 # CKEDITOR Options
 CKEDITOR_UPLOAD_PATH = os.path.join(BASE_DIR, "..", "..", "ckeditor-uploads")
