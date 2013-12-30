@@ -24,7 +24,7 @@ HAYSTACK_CONNECTIONS = {
 
 WSGI_APPLICATION = 'uttr.wsgi.production'
 
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
