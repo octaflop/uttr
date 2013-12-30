@@ -31,3 +31,4 @@ c2/
 *.scssc
 certs/
 .sass-cache
+/whoosh_index/

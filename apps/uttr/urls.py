@@ -14,7 +14,7 @@ urlpatterns = patterns('',
 
     # 3rd party urls
     url(r'^ckeditor/', include('uttr.ckeditor_urls')),
-    url(r'^ckeditor/', include('haystack.urls')),
+    url(r'^search/', include('haystack.urls', namespace='search')),
 
     # admin urls
     url(r'^admin/', include(admin.site.urls)),

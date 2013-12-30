@@ -13,4 +13,4 @@ class BlogPostIndex(indexes.SearchIndex, indexes.Indexable):
 
     def index_queryset(self, using=None):
         now = datetime.datetime.now()
-        return self.get_model().objects.filter(publish_date__lte=now)
+        return self.get_model().objects.filter(publish_date__lte=now).filter(status='posted').exclude(post_type='pm')

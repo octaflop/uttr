@@ -129,3 +129,6 @@ HAYSTACK_CONNECTIONS = {
         'PATH': os.path.normpath(os.path.join(BASE_DIR, "..", "..", "whoosh_index")),
     }
 }
+
+# Our site can handle this
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'

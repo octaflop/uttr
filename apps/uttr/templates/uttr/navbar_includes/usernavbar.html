@@ -18,10 +18,11 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <form method='POST' action="#{# url '' #}" class='navbar-form' role='form'>
+          <form method='get' action="{% url 'search:haystack_search' %}" class='navbar-form' role='form'>
             <div class='form-group'>
-              <label class='sr-only' for='query'>Search</label>
-              <input name='query' type='search' placeholder='search for article' class='form-control' />
+              <label class='sr-only' for='q'>Search</label>
+              <input name='q' type='search' placeholder='search for article' class='form-control' {% if query %}value='{{ query }}'{% endif %} />
+              <input type='hidden' name='models' value='blog.blogpost' />
             </div>
             {# <div class='form-group'> #}
               <button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-search'></span> Search</button>
