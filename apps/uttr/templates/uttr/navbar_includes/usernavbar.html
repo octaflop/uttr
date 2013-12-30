@@ -17,6 +17,17 @@
         <li class="{% if compose_active %}active{% endif %}"><a href="{% url 'blog:manage:create' %}"><span class='glyphicon glyphicon-pencil'></span> Compose new entry</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form method='POST' action="#{# url '' #}" class='navbar-form' role='form'>
+            <div class='form-group'>
+              <label class='sr-only' for='query'>Search</label>
+              <input name='query' type='search' placeholder='search for article' class='form-control' />
+            </div>
+            {# <div class='form-group'> #}
+              <button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-search'></span> Search</button>
+            {# </div> #}
+          </form>
+        </li>
         <li><a href="{% url 'profiles:logout' %}"><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
       </ul>
     </div><!--/.nav-collapse -->
