@@ -2,7 +2,8 @@ from .base import *
 
 from os import environ
 
-#DB_PASS = environ['DB_PASS']
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
 DATABASES = {
     'default': {
@@ -24,9 +25,6 @@ HAYSTACK_CONNECTIONS = {
 
 WSGI_APPLICATION = 'uttr.wsgi.production'
 
-DEBUG = True
-
-TEMPLATE_DEBUG = DEBUG
 
 try:
     from local_settings import *

@@ -12,7 +12,8 @@ from profiles.models import UttrUser
 def login_view(request):
     ctx = {}
     next_url = request.GET.get('next', False)
-    ctx['next_url'] = next_url
+    if next_url:
+        ctx['next_url'] = next_url
     login_form = LoginForm(initial={'next_url': next_url})
     ctx['login_form'] = login_form
 
