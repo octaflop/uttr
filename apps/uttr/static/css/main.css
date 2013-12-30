@@ -19,3 +19,8 @@ footer {
   background-color: whitesmoke;
   padding: 0.5em;
 }
+
+/* line 23, ../sass/main.sass */
+.navbar-form {
+  width: 100%;
+}
