@@ -15,6 +15,13 @@ DATABASES = {
     }
 }
 
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.normpath(os.path.join("/", "tmp", "whoosh_index")),
+    }
+}
+
 WSGI_APPLICATION = 'uttr.wsgi.production'
 
 DEBUG = False
