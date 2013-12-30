@@ -10,6 +10,7 @@
 <form class="form-signin" action="{% url 'home' %}" method="POST">
   <h2 class="form-signin-heading">Please sign in</h2>
   {% csrf_token %}
+  <input type='hidden' name='next_url' value='{{ next_url }}' />
   {{ login_form.email.errors }}
   {{ login_form.email }}
   {{ login_form.password.errors }}

@@ -11,7 +11,9 @@ from profiles.models import UttrUser
 
 def login_view(request):
     ctx = {}
-    login_form = LoginForm()
+    next_url = request.GET.get('next', False)
+    ctx['next_url'] = next_url
+    login_form = LoginForm(initial={'next_url': next_url})
     ctx['login_form'] = login_form
 
     if request.method == 'POST':
@@ -28,7 +30,11 @@ def login_view(request):
                     login(request, user)
                     message = "Thank you for logging in"
                     messages.success(request, message)
-                    return redirect(reverse('profiles:home'))
+                    next_url = request.POST.get('next_url')
+                    if next_url != '':
+                        return redirect(next_url)
+                    else:
+                        return redirect(reverse('profiles:home'))
                 else:
                     messages.warning(request, "Thank you for logging in. Please change your password.")
                     return redirect(reverse('profiles:change_password'))
