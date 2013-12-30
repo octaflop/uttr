@@ -17,9 +17,10 @@ discussionpatterns = patterns('blog.views.list',
 )
 
 pmpatterns = patterns('blog.views.pm',
-    url(r'^$', 'pm_list', name='index'),
     url(r'^create$', 'create', name='create'),
-    url(r'^(?P<id>\d+)$', 'create', name='view'),
+    # For now, use the admin to view
+    # url(r'^$', 'pm_list', name='index'),
+    # url(r'^(?P<id>\d+)$', 'create', name='view'),
 )
 
 urlpatterns = patterns('',

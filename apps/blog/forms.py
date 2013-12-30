@@ -23,19 +23,21 @@ class BlogForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'form-control'
 
+
 class PMForm(forms.ModelForm):
     """
     Model form for blog creation / edits
     """
-    entry = forms.CharField(widget=CKEditorWidget())
     draft = forms.CharField(widget=CKEditorWidget())
-    mod_notes = forms.CharField(widget=CKEditorWidget())
     class Meta:
         model = BlogPost
-        exclude = ('publish_date', 'source', 'poll', 'author', 'is_poll')
+        exclude = ('publish_date', 'source', 'poll', 'author', 'is_poll', 'entry', 'mod_notes', 'parent_post', 'post_type', 'status', 'tags')
 
     def __init__(self, *args, **kwargs):
-        super(BlogForm, self).__init__(*args, **kwargs)
-        self.fields['entry'].label = 'Blog Post'
+        super(PMForm, self).__init__(*args, **kwargs)
+        self.fields['draft'].label = 'Message'
+        self.fields['slug'].label = ''
+        self.fields['slug'].widget = forms.HiddenInput()
+
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'form-control'
