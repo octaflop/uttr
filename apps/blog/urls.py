@@ -16,9 +16,10 @@ discussionpatterns = patterns('blog.views.list',
     url(r'^(?P<id>\d+)$', 'discussion_entry', name='view'),
 )
 
-pmpatterns = patterns('blog.views.list',
+pmpatterns = patterns('blog.views.pm',
     url(r'^$', 'pm_list', name='index'),
-    url(r'^(?P<id>\d+)$', 'pm_entry', name='view'),
+    url(r'^create$', 'create', name='create'),
+    url(r'^(?P<id>\d+)$', 'create', name='view'),
 )
 
 urlpatterns = patterns('',
