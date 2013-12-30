@@ -12,7 +12,11 @@ urlpatterns = patterns('',
     url(r'^blog/', include('blog.urls', namespace='blog')),
     url(r'^pages/', include('pages.urls', namespace='pages')),
 
+    # 3rd party urls
     url(r'^ckeditor/', include('uttr.ckeditor_urls')),
+    url(r'^ckeditor/', include('haystack.urls')),
+
+    # admin urls
     url(r'^admin/', include(admin.site.urls)),
 )
 
