@@ -52,6 +52,7 @@ THIRD_PARTY_APPS = (
     'south',
     'ckeditor',
     'taggit',
+    'haystack',
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
@@ -120,3 +121,14 @@ CKEDITOR_CONFIGS = {
         ],
     }
 }
+
+# Haystack settings
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.normpath(os.path.join(BASE_DIR, "..", "..", "whoosh_index")),
+    }
+}
+
+# Our site can handle this
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
