@@ -16,6 +16,15 @@ DATABASES = {
     }
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.mandrillapp.com'
+EMAIL_HOST_USER = 'faris@theluckybead.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_SUBJECT_PREFIX = '[Digital Textbook Study] '
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'digitaltextbookstudy@gmail.com'
+
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
