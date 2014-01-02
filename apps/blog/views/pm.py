@@ -12,6 +12,8 @@ from django.contrib.auth.decorators import login_required
 from blog.forms import PMForm
 from blog.models import BlogPost
 
+from postal.utils import mail_moderator
+
 @login_required
 def create(request):
     """
@@ -36,9 +38,17 @@ def create(request):
             blog.status = 'posted'
             blog.entry = blog.draft
             blog.save()
+            subject = "Private message sent via online interface"
+            message = """
+            You've received a message via the online interface.\n
+            Message: \n
+            %s
+
+            Link to message: https://digitaltextbookstudy.com/admin/blog/blogpost/%s/
+            """ % (blog.draft, blog.id)
+            mail_moderator(subject, message)
             message = "Your message was sent successfully!"
             messages.success(request, message)
-
         else:
             message = "Sorry, there was an issue with your message"
             messages.error(request, message)

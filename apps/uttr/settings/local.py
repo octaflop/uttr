@@ -5,7 +5,7 @@ from .base import *
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = '/tmp/uttr-messages'
-DEFAULT_FROM_EMAIL = 'digitaltextbookstudy@zaneprep.com'
+DEFAULT_FROM_EMAIL = 'digitaltextbookstudy@gmail.com'
 
 DATABASES = {
     'default': {
