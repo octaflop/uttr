@@ -46,6 +46,7 @@ LOCAL_APPS = (
     'polls',
     'profiles',
     'pages',
+    'postal',
 )
 
 THIRD_PARTY_APPS = (
