@@ -12,15 +12,18 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="{% if home_active %}active{% endif %}"><a href="{% url 'profiles:home' %}"><span class='glyphicon glyphicon-home'></span> Home</a></li>
-        <li class="{% if lib_active %}active{% endif %}"><a href="{% url 'blog:library:index' %}"><span class='glyphicon glyphicon-book'></span> Library</a></li>
-        {% if user.role == 'admin' %}
-        <li class="{% if compose_active %}active{% endif %}"><a href="{% url 'blog:manage:create' %}"><span class='glyphicon glyphicon-pencil'></span> Create new topic</a></li>
-        {% else %}
-        <li class="{% if compose_active %}active{% endif %}"><a href="{% url 'blog:pm:create' %}"><span class='glyphicon glyphicon-envelope'></span> Message the moderator</a></li>
+        {% if user.is_authenicated %}
+          <li class="{% if home_active %}active{% endif %}"><a href="{% url 'profiles:home' %}"><span class='glyphicon glyphicon-home'></span> Home</a></li>
+          <li class="{% if lib_active %}active{% endif %}"><a href="{% url 'blog:library:index' %}"><span class='glyphicon glyphicon-book'></span> Library</a></li>
+          {% if user.role == 'admin' %}
+          <li class="{% if compose_active %}active{% endif %}"><a href="{% url 'blog:manage:create' %}"><span class='glyphicon glyphicon-pencil'></span> Create new topic</a></li>
+          {% else %}
+          <li class="{% if compose_active %}active{% endif %}"><a href="{% url 'blog:pm:create' %}"><span class='glyphicon glyphicon-envelope'></span> Message the moderator</a></li>
+          {% endif %}
         {% endif %}
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        {% if user.is_authenicated %}
         <li>
           <form method='get' action="{% url 'search:haystack_search' %}" class='navbar-form' role='form'>
             <div class='form-group'>
@@ -34,6 +37,7 @@
           </form>
         </li>
         <li><a href="{% url 'profiles:logout' %}"><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
+        {% endif %}
       </ul>
     </div><!--/.nav-collapse -->
   </div>
