@@ -25,9 +25,7 @@
   <body>
     <div id='wrap'>
     {% block navbar %}
-      {# {% if user.is_authenticated %} #}
         {% include 'uttr/navbar_includes/usernavbar.html' %}
-      {# {% endif %} #}
     {% endblock %}
 
     {% if messages %}

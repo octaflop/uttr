@@ -4,7 +4,7 @@ import datetime
 
 from profiles.models import UttrUser
 
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from django.template import RequestContext
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -40,4 +40,4 @@ def create(request):
             messages.error(request, message)
 
 
-    return render_to_response(template_name, RequestContext(request, ctx))
+    return render(request, template_name, ctx)
