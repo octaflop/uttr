@@ -30,9 +30,9 @@ def library_entry(request, id):
 @login_required
 def discussion_list(request):
     ctx = {}
-    template_name = 'blog/library/list.html'
+    template_name = 'blog/forum/list.html'
     library_entries = BlogPost.objects.filter(post_type='disc')
-    ctx['library_entries'] = library_entries
+    ctx['topics'] = library_entries
 
     return render(request, template_name, ctx)
 

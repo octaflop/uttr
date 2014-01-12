@@ -24,3 +24,11 @@ footer {
 .navbar-form {
   width: 100%;
 }
+
+/* line 26, ../sass/main.sass */
+article.topic {
+  background-color: #fdfdfd;
+  border-color: whitesmoke;
+  border-width: 1px;
+  border-style: dashed;
+}
