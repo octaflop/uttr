@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     url(r'^$', 'profiles.views.home.login_view', name='home'),
     url(r'^profiles/', include('profiles.urls', namespace='profiles')),
     url(r'^accounts/login/$', 'profiles.views.home.login_view', name='login'),
-    url(r'^blog/', include('blog.urls', namespace='blog')),
+    url(r'^forum/', include('blog.urls', namespace='blog')),
     url(r'^pages/', include('pages.urls', namespace='pages')),
 
     # 3rd party urls

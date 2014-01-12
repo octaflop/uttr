@@ -26,6 +26,6 @@ pmpatterns = patterns('blog.views.pm',
 urlpatterns = patterns('',
     url(r'^manage/', include(managepatterns, namespace='manage')),
     url(r'^library/', include(librarypatterns, namespace='library')),
-    url(r'^discussion/', include(discussionpatterns, namespace='discussion')),
-    url(r'^messages/', include(pmpatterns, namespace='pm'))
+    url(r'^messages/', include(pmpatterns, namespace='pm')),
+    url(r'^', include(discussionpatterns, namespace='discussion'))
 )

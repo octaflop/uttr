@@ -13,7 +13,7 @@
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         {% if user.is_authenticated %}
-          <li class="{% if home_active %}active{% endif %}"><a href="{% url 'profiles:home' %}"><span class='glyphicon glyphicon-home'></span> Home</a></li>
+          <li class="{% if home_active %}active{% endif %}"><a href="{% url 'blog:discussion:index' %}"><span class='glyphicon glyphicon-comment'></span> Home</a></li>
           <li class="{% if lib_active %}active{% endif %}"><a href="{% url 'blog:library:index' %}"><span class='glyphicon glyphicon-book'></span> Library</a></li>
           {% if user.role == 'admin' %}
           <li class="{% if compose_active %}active{% endif %}"><a href="{% url 'blog:manage:create' %}"><span class='glyphicon glyphicon-pencil'></span> Create new topic</a></li>
