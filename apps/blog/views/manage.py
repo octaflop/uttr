@@ -4,7 +4,8 @@ import datetime
 
 from profiles.models import UttrUser
 
-from django.shortcuts import render
+from django.core.urlresolvers import reverse
+from django.shortcuts import render, redirect
 from django.template import RequestContext
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -31,9 +32,11 @@ def create(request):
         if blog_form.is_valid():
             blog = blog_form.save(commit=False)
             blog.author = request.user
+            blog.publish_date = datetime.datetime.now()
             blog.save()
             message = "Your post was saved successfully!"
             messages.success(request, message)
+            return redirect(blog.get_absolute_url())
 
         else:
             message = "Sorry, there was an issue with your post"

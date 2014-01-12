@@ -26,6 +26,7 @@ def library_entry(request, id):
 
     return render(request, template_name, ctx)
 
+
 @login_required
 def discussion_list(request):
     ctx = {}
@@ -44,6 +45,7 @@ def discussion_entry(request, id):
     ctx['entry'] = entry
 
     return render(request, template_name, ctx)
+
 
 @login_required
 def pm_list(request):
