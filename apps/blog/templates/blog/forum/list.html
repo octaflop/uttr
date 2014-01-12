@@ -1,0 +1,30 @@
+{% extends 'blog/_blog_base.html' %}
+{% block title %}
+Forum Home
+{% endblock %}
+
+{% block body %}
+  <h3>Forum</h3>
+  {% for topic in topics %}
+  	<article class='row col-md-12 topic'>
+  		<header class='row'>
+  			<div class='col-md-8'>
+			    <h4>
+			      <a href='{{ topic.get_absolute_url }}'>{{ topic.title }}</a>
+			    </h4>
+		    </div>
+		    <div class='col-md-4'>
+		    	<span class='date'>
+		    		{{ topic.publish_date }}
+		    	</span>
+		    </div>
+	    </header>
+	    <section class='row col-md-12'>
+          {{ topic.entry|safe|truncatewords_html:20 }}
+	    </section>
+	    <section class='row col-md-12'>
+        Last updated: {{ topic.updated_at }}
+	    </section>
+    </article>
+  {% endfor %}
+{% endblock %}
