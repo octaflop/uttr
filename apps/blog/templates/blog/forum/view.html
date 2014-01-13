@@ -1,0 +1,10 @@
+{% extends 'blog/_blog_base.html' %}
+
+{% block body %}
+  <h3>{{ thread.title }}</h3>
+  {{ thread.entry|safe }}
+
+  {% for post in posts %}
+    {{ post.title }}
+  {% endfor %}
+{% endblock %}

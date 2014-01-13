@@ -3,7 +3,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-from blog.models import BlogPost
+from blog.models import BlogPost, ForumThread
 
 @login_required
 def library_list(request):
@@ -40,9 +40,11 @@ def discussion_list(request):
 @login_required
 def discussion_entry(request, id):
     ctx = {}
-    template_name = 'blog/library/entry.html'
-    entry = BlogPost.objects.get(id=id, post_type='disc')
-    ctx['entry'] = entry
+    template_name = 'blog/forum/view.html'
+    thread = ForumThread.objects.get(id=id)
+    posts = thread.blogpost_set.all()
+    ctx['thread'] = thread
+    ctx['posts'] = posts
 
     return render(request, template_name, ctx)
 
