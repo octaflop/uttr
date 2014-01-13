@@ -39,6 +39,8 @@ class BlogPost(TimestampMixin):
     poll = models.ForeignKey(Poll, blank=True, null=True)
     parent_post = models.ForeignKey('self', blank=True, null=True)
 
+    thread = models.ForeignKey("ForumThread", blank=True, null=True)
+
     def get_absolute_url(self):
         if self.post_type == 'lib':
             return reverse('blog:library:view', kwargs={'id': str(self.id)})
@@ -62,6 +64,20 @@ class BlogPost(TimestampMixin):
         if self.parent_post:
             return parent_post
         return False
+
+
+class ForumThread(models.Model):
+    """
+    Combines 'BlogPost' models into a thread
+    """
+    topic_post = models.ForeignKey(BlogPost)
+
+    @property
+    def title(self):
+        return self.topic_post.title
+
+    def __unicode__(self):
+        return self.title
 
 
 class Source(models.Model):
