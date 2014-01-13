@@ -39,7 +39,7 @@ class BlogPost(TimestampMixin):
     poll = models.ForeignKey(Poll, blank=True, null=True)
     parent_post = models.ForeignKey('self', blank=True, null=True)
 
-    thread = models.ForeignKey("Blog.ForumThread", blank=True, null=True)
+    thread = models.ForeignKey("ForumThread", blank=True, null=True)
 
     def get_absolute_url(self):
         if self.post_type == 'lib':
@@ -76,7 +76,7 @@ class ForumThread(models.Model):
     def title(self):
         return self.topic_post.title
 
-    return __unicode__(self):
+    def __unicode__(self):
         return self.title
 
 
