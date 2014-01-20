@@ -34,7 +34,7 @@ Forum Home
   	    	</span>
         </td>
         <td>
-          #
+          # {{ topic.blogpost_set.all|length }}
         </td>
         <td>
           {{ topic.entry|safe|truncatewords_html:20 }}

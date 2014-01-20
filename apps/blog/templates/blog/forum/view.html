@@ -10,14 +10,14 @@
   {% endfor %}
 
   <div class='reply'>
-    <form action="{% url 'blog:discussion_entry' id=thread.id %}" method='POST' class='form'>{% csrf_token %}
+    <form action="{% url 'blog:discussion:view' id=thread.id %}" method='POST' class='form'>{% csrf_token %}
     {% for field in reply_form %}
       <div class='form-group'>
         {{ field.errors }}
         {{ field.label_tag }} {{ field }}
       </div>
     {% endfor %}
-    <button class='btn btn-success'></button>
+    <button class='btn btn-success'>Reply</button>
     </form>
   </div>
 {% endblock %}
