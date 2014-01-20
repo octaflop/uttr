@@ -6,9 +6,19 @@ from ckeditor.widgets import CKEditorWidget
 from blog.models import BlogPost
 
 
+class ReplyForm(forms.ModelForm):
+    """
+    model for replying to topic posts
+    """
+    draft = forms.CharField(widget==CKEditorWidget())
+    class Meta:
+        model = BlogPost
+
+
 class BlogForm(forms.ModelForm):
     """
-    Model form for blog creation / edits
+    Model form for topic creation / edits
+    Only for admins
     """
     entry = forms.CharField(widget=CKEditorWidget())
     draft = forms.CharField(widget=CKEditorWidget())
