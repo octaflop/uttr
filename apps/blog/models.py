@@ -55,7 +55,7 @@ class BlogPost(TimestampMixin):
 
     @property
     def is_child(self):
-        if self.parent_post:
+        if self.parent_post is not None:
             return True
         return False
 

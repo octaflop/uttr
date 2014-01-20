@@ -4,7 +4,20 @@
   <h3>{{ thread.title }}</h3>
   {{ thread.entry|safe }}
 
-  {% for post in posts %}
-    {{ post.title }}
+  {% for reply in replies %}
+    <h4>{{ reply.title }}</h4>
+    {{ reply.entry|safe }}
   {% endfor %}
+
+  <div class='reply'>
+    <form action="{% url 'blog:discussion_entry' id=thread.id %}" method='POST' class='form'>{% csrf_token %}
+    {% for field in reply_form %}
+      <div class='form-group'>
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+      </div>
+    {% endfor %}
+    <button class='btn btn-success'></button>
+    </form>
+  </div>
 {% endblock %}
