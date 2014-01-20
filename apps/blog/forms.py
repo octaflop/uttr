@@ -10,9 +10,20 @@ class ReplyForm(forms.ModelForm):
     """
     model for replying to topic posts
     """
-    draft = forms.CharField(widget==CKEditorWidget())
+    draft = forms.CharField(widget=CKEditorWidget())
+    slug = forms.CharField(widget=forms.HiddenInput())
     class Meta:
         model = BlogPost
+        exclude = ('entry', 'publish_date', 'source', 'poll', 'author', 'is_poll',
+            'mod_notes', 'status', 'post_type', 'thread', 'tags', 'parent_post')
+
+    def __init__(self, *args, **kwargs):
+        super(ReplyForm, self).__init__(*args, **kwargs)
+        self.fields['draft'].label = 'Reply'
+        self.fields['slug'].label = ''
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control'
+
 
 
 class BlogForm(forms.ModelForm):

@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 
 from blog.models import BlogPost, ForumThread
 
+from blog.forms import ReplyForm
+
 @login_required
 def library_list(request):
     ctx = {}
@@ -42,9 +44,21 @@ def discussion_entry(request, id):
     ctx = {}
     template_name = 'blog/forum/view.html'
     thread = ForumThread.objects.get(id=id)
-    posts = thread.blogpost_set.all()
+    topic = thread.blogpost_set.all()[0]
+    replies = thread.blogpost_set.filter(author__role='author', status='posted')
     ctx['thread'] = thread
-    ctx['posts'] = posts
+    ctx['topic'] = topic
+    ctx['replies'] = replies
+    ctx['reply_form'] = ReplyForm()
+
+    if request.method == 'POST':
+        reply_form = ReplyForm(request.POST)
+        ctx['reply_form'] = reply_form
+        if reply_form.is_valid:
+            reply = reply_form.save(commit=False)
+            reply.author = request.user
+            reply.save()
+
 
     return render(request, template_name, ctx)
 

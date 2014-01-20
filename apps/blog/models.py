@@ -24,7 +24,7 @@ class BlogPost(TimestampMixin):
     )
 
     title = models.CharField(max_length=250)
-    slug = models.SlugField(max_length=40, default='')
+    slug = models.SlugField(max_length=40, default='', unique=True)
     author = models.ForeignKey(UttrUser)
     entry = models.TextField(blank=True)
     draft = models.TextField()
@@ -55,7 +55,7 @@ class BlogPost(TimestampMixin):
 
     @property
     def is_child(self):
-        if self.parent_post:
+        if self.parent_post is not None:
             return True
         return False
 
