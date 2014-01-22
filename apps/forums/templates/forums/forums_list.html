@@ -1,0 +1,40 @@
+{% extends 'forums/_forum_base.html' %}
+
+{% block body %}
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>
+          Topic
+        </th>
+        <th>
+          Published
+        </th>
+        <th>
+          Responses
+        </th>
+        <th>
+          Latest Post
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for topic in topics %}
+      <tr>
+        <td>
+          <a href="{% url 'forums:view:topic' slug=slug %}">{{ topic.title }}</a>
+        </td>
+        <td>
+          {{ topic.created_at }}
+        </td>
+        <td>
+          {{ topic.reply_set.all|length }} replies
+        </td>
+        <td>
+          {{ topic.latest }}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

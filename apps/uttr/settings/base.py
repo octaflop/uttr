@@ -42,6 +42,7 @@ DJANGO_APPS = (
 LOCAL_APPS = (
     'uttr', # metapp for settings
 
+    'forums', # the money-maker
     'blog',
     'polls',
     'profiles',
