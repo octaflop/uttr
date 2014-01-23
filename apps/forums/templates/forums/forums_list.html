@@ -22,16 +22,16 @@
       {% for topic in topics %}
       <tr>
         <td>
-          <a href="{% url 'forums:view:topic' slug=slug %}">{{ topic.title }}</a>
+          <a href="{% url 'forums:view' slug=topic.slug %}">{{ topic.title }}</a>
         </td>
         <td>
           {{ topic.created_at }}
         </td>
         <td>
-          {{ topic.reply_set.all|length }} replies
+          {{ topic.reply_length }} repl{% if topic.reply_length > 1%}s{% else %}y{% endif %}
         </td>
         <td>
-          {{ topic.latest }}
+          {{ topic.latest|safe|truncatewords_html:8 }}
         </td>
       </tr>
       {% endfor %}

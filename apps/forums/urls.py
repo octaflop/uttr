@@ -6,6 +6,6 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('forums.views',
-    url(r'^(?P<slug>[\w-]+)/$', 'topic_list', name='view'),
+    url(r'^(?P<slug>[\w-]+)/$', 'topic_view', name='view'),
     url(r'^$', 'topic_list', name='list'),
 )

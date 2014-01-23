@@ -25,6 +25,20 @@ class Topic(TimestampMixin):
     slug = models.SlugField(max_length=100, default='', unique=True)
     content = models.TextField()
 
+    def __unicode__(self):
+        return title
+
+    @property
+    def latest(self):
+        try:
+            return self.reply_set.filter(status='posted').order_by('created_at')[0].entry
+        except KeyError:
+            return
+
+    @property
+    def reply_length(self):
+        return len(self.reply_set.filter(status='posted'))
+
 
 class Reply(TimestampMixin):
     """
