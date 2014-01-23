@@ -14,6 +14,7 @@ class TopicAdminForm(forms.ModelForm):
 
 
 class TopicAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ("title",)}
     form = TopicAdminForm
 
 

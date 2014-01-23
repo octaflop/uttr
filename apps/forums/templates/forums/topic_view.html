@@ -1,0 +1,14 @@
+{% extends 'forums/_forum_base.html' %}
+
+{% block body %}
+  <h2>{{ topic.title }}</h2>
+  <div class='topic-intro'>
+    {{ topic.content|safe }}
+  </div>
+
+<div class='replies'>
+  {% for reply in replies %}
+    {{ reply.entry|safe }}
+  {% endfor %}
+</div>
+{% endblock %}
