@@ -26,7 +26,7 @@ class Topic(TimestampMixin):
     content = models.TextField()
 
     def __unicode__(self):
-        return title
+        return self.title
 
     @property
     def latest(self):
