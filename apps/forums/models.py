@@ -37,7 +37,10 @@ class Topic(TimestampMixin):
     @property
     def latest(self):
         try:
-            return self.reply_set.filter(status='posted').order_by('created_at')[0].entry
+            try:
+                return self.reply_set.filter(status='posted').order_by('created_at')[0].entry
+            except IndexError:
+                return
         except KeyError:
             return
 
