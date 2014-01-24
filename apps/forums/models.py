@@ -32,7 +32,7 @@ class Topic(TimestampMixin):
         return self.title
 
     def get_absolute_url(self):
-        reverse('forums:view', kwargs=dict(bid=int_to_base36(self.id)))
+        return reverse('forums:view', kwargs=dict(bid=int_to_base36(self.id)))
 
     @property
     def latest(self):
