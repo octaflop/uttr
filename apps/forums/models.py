@@ -1,6 +1,9 @@
 #encoding: utf-8
 
 from django.db import models
+from django.core.urlresolvers import reverse
+from django.utils.http import int_to_base36
+
 from uttr.models.mixins import TimestampMixin
 
 from taggit.managers import TaggableManager
@@ -27,6 +30,9 @@ class Topic(TimestampMixin):
 
     def __unicode__(self):
         return self.title
+
+    def get_absolute_url(self):
+        reverse('forums:view', kwargs=dict(bid=int_to_base36(self.id)))
 
     @property
     def latest(self):
@@ -69,4 +75,8 @@ class Reply(TimestampMixin):
 
 
     def __unicode__(self):
-        return "%s in response to %s" % (self.draft[:50], self.topic.title)
+        return "%s by %s in response to %s" % (self.bid, self.author, self.topic.title)
+
+    @property
+    def bid(self):
+        return int_to_base36(self.id)

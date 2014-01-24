@@ -22,7 +22,7 @@
       {% for topic in topics %}
       <tr>
         <td>
-          <a href="{% url 'forums:view' slug=topic.slug %}">{{ topic.title }}</a>
+          <a href="{% url 'forums:view_by_slug' slug=topic.slug %}">{{ topic.title }}</a>
         </td>
         <td>
           {{ topic.created_at }}
