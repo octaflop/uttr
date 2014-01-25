@@ -18,6 +18,8 @@ class Migration(SchemaMigration):
             ('first_name', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True)),
             ('last_name', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True)),
             ('role', self.gf('django.db.models.fields.CharField')(default='reader', max_length=7)),
+            ('category', self.gf('django.db.models.fields.CharField')(default='other', max_length=10)),
+            ('notes', self.gf('django.db.models.fields.TextField')(blank=True)),
             ('is_active', self.gf('django.db.models.fields.BooleanField')(default=True)),
             ('is_admin', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('is_staff', self.gf('django.db.models.fields.BooleanField')(default=False)),
@@ -77,6 +79,7 @@ class Migration(SchemaMigration):
         },
         u'profiles.uttruser': {
             'Meta': {'object_name': 'UttrUser'},
+            'category': ('django.db.models.fields.CharField', [], {'default': "'other'", 'max_length': '10'}),
             'email': ('django.db.models.fields.EmailField', [], {'unique': 'True', 'max_length': '255', 'db_index': 'True'}),
             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
             'groups': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "u'user_set'", 'blank': 'True', 'to': u"orm['auth.Group']"}),
@@ -87,6 +90,7 @@ class Migration(SchemaMigration):
             'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
+            'notes': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
             'role': ('django.db.models.fields.CharField', [], {'default': "'reader'", 'max_length': '7'}),
             'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "u'user_set'", 'blank': 'True', 'to': u"orm['auth.Permission']"})
