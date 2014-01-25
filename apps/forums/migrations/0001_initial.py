@@ -33,7 +33,6 @@ class Migration(SchemaMigration):
             ('status', self.gf('django.db.models.fields.CharField')(default='draft', max_length=10)),
             ('post_type', self.gf('django.db.models.fields.CharField')(default='disc', max_length=10)),
             ('is_poll', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('poll', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['polls.Poll'], null=True, blank=True)),
             ('parent_post', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['forums.Reply'], null=True, blank=True)),
         ))
         db.send_create_signal(u'forums', ['Reply'])
@@ -78,7 +77,6 @@ class Migration(SchemaMigration):
             'is_poll': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'mod_notes': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'parent_post': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['forums.Reply']", 'null': 'True', 'blank': 'True'}),
-            'poll': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['polls.Poll']", 'null': 'True', 'blank': 'True'}),
             'post_type': ('django.db.models.fields.CharField', [], {'default': "'disc'", 'max_length': '10'}),
             'publish_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
             'status': ('django.db.models.fields.CharField', [], {'default': "'draft'", 'max_length': '10'}),
@@ -93,36 +91,6 @@ class Migration(SchemaMigration):
             'slug': ('django.db.models.fields.SlugField', [], {'default': "''", 'unique': 'True', 'max_length': '100'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '250'}),
             'updated_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'})
-        },
-        u'polls.poll': {
-            'Meta': {'object_name': 'Poll'},
-            'answers': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['polls.PollAnswer']", 'null': 'True', 'blank': 'True'}),
-            'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'question': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['polls.PollQuestion']"}),
-            'updated_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
-            'votes': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['polls.PollVote']", 'null': 'True', 'blank': 'True'})
-        },
-        u'polls.pollanswer': {
-            'Meta': {'object_name': 'PollAnswer'},
-            'answer': ('django.db.models.fields.TextField', [], {}),
-            'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'updated_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'})
-        },
-        u'polls.pollquestion': {
-            'Meta': {'object_name': 'PollQuestion'},
-            'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'question': ('django.db.models.fields.TextField', [], {}),
-            'updated_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'})
-        },
-        u'polls.pollvote': {
-            'Meta': {'object_name': 'PollVote'},
-            'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'updated_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
-            'voter': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['profiles.UttrUser']"})
         },
         u'profiles.uttruser': {
             'Meta': {'object_name': 'UttrUser'},
