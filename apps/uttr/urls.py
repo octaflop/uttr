@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     url(r'^profiles/', include('profiles.urls', namespace='profiles')),
     url(r'^accounts/login/$', 'profiles.views.home.login_view', name='login'),
     # Grapple-vined
-    url(r'^library/', include('blog.urls', namespace='blog')),
+    url(r'^library/', include('library.urls', namespace='library')),
     url(r'^forum/', include('forums.urls', namespace='forums')),
     url(r'^pages/', include('pages.urls', namespace='pages')),
 

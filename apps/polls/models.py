@@ -44,7 +44,7 @@ class PostPoll(TimestampMixin):
         ("none", "None"),
     )
     answeree = models.ForeignKey("profiles.UttrUser")
-    entry = models.ForeignKey("blog.BlogPost")
+    entry = models.ForeignKey("forums.Reply")
     answer = models.CharField(max_length=8, choices=VOTE_CHOICES, default='unread')
 
     def __unicode__(self):
