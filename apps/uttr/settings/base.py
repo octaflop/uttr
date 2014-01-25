@@ -44,7 +44,7 @@ LOCAL_APPS = (
 
     'forums', # the money-maker
     'library', # like forums, but list resources by admin
-    'polls',
+    # 'polls',
     'profiles',
     'pages',
     'postal',
