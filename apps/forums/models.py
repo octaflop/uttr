@@ -71,7 +71,7 @@ class Reply(TimestampMixin):
     # poll relationship
     is_poll = models.BooleanField(default=False)
     # TODO: relate to poll. this might take place in another model
-    poll = models.ForeignKey('polls.Poll', blank=True, null=True)
+    # poll = models.ForeignKey('polls.Poll', blank=True, null=True)
     # reply modeling — determines the reply position; esp if replying to another post
     # if True and not None, then it's a response (see method below)
     parent_post = models.ForeignKey('self', blank=True, null=True)
