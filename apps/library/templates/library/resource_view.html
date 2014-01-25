@@ -1,0 +1,8 @@
+{% extends 'library/_library_base.html' %}
+
+{% block body %}
+  <h2>{{ resource.title }}</h2>
+  <div class='resource-intro'>
+    {{ resource.content|safe }}
+  </div>
+{% endblock %}

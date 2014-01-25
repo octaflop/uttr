@@ -43,7 +43,8 @@ LOCAL_APPS = (
     'uttr', # metapp for settings
 
     'forums', # the money-maker
-    'blog',
+    'library', # like forums, but list resources by admin
+    # 'blog',
     'polls',
     'profiles',
     'pages',

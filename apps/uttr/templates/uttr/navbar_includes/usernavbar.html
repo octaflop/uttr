@@ -14,11 +14,11 @@
       <ul class="nav navbar-nav">
         {% if user.is_authenticated %}
           <li class="{% if home_active %}active{% endif %}"><a href="{% url 'forums:list' %}"><span class='glyphicon glyphicon-comment'></span> Topics</a></li>
-          <li class="{% if lib_active %}active{% endif %}"><a href="{% url 'blog:library:index' %}"><span class='glyphicon glyphicon-book'></span> Library</a></li>
+          <li class="{% if lib_active %}active{% endif %}"><a href="{% url 'library:list' %}"><span class='glyphicon glyphicon-book'></span> Library</a></li>
           {% if user.role == 'admin' %}
-          <li class="{% if compose_active %}active{% endif %}"><a href="{% url 'blog:manage:create' %}"><span class='glyphicon glyphicon-pencil'></span> Create new topic</a></li>
+          <li class="{% if compose_active %}active{% endif %}"><a href="{% url 'forums:manage:create' %}"><span class='glyphicon glyphicon-pencil'></span> Create new topic</a></li>
           {% else %}
-          <li class="{% if compose_active %}active{% endif %}"><a href="{% url 'blog:pm:create' %}"><span class='glyphicon glyphicon-envelope'></span> Message the moderator</a></li>
+          <li class="{% if compose_active %}active{% endif %}"><a href="{% url 'forums:pm:create' %}"><span class='glyphicon glyphicon-envelope'></span> Message the moderator</a></li>
           {% endif %}
         {% endif %}
       </ul>

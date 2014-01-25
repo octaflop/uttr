@@ -1,0 +1,40 @@
+{% extends 'library/_library_base.html' %}
+
+{% block body %}
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>
+          Resource
+        </th>
+        <th>
+          Published
+        </th>
+        <th>
+          Responses
+        </th>
+        <th>
+          Latest Post
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for resource in resources %}
+      <tr>
+        <td>
+          <a href="{{ resource.get_absolute_url }}">{{ resource.title }}</a>
+        </td>
+        <td>
+          {{ resource.created_at }}
+        </td>
+        <td>
+          {{ resource.reply_length }} repl{% if resource.reply_length > 1%}s{% else %}y{% endif %}
+        </td>
+        <td>
+          {{ resource.latest|safe|truncatewords_html:8 }}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
