@@ -5,14 +5,20 @@ from django.utils.http import base36_to_int, int_to_base36
 from django.core.urlresolvers import reverse
 
 from forums.models import Topic, Reply
+from forums.forms import TopicForm
 
 def topic_create(request):
     ctx = {}
-    template_name = 'forums/forums_list.html'
+    template_name = 'forums/topic_create.html'
 
     topics = Topic.objects.all()
-    ctx['topics'] = topics
+    topic_form = TopicForm()
+    if request.method == "POST":
+        topic_form = TopicForm(request.POST)
+        if topic_form.is_valid():
+            topic_form.save()
 
+    ctx['topic_form'] = topic_form
     return render(request, template_name, ctx)
 
 def topic_view_by_slug(request, slug):

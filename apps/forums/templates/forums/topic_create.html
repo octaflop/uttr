@@ -1,0 +1,10 @@
+{% extends 'forums/_forum_base.html' %}
+
+{% block body %}
+  <h2>Create Topic</h2>
+  <div class='topic-form'>
+  <form method='POST' action="{% url 'forums:manage:create' %}">{% csrf_token %}
+    {{ topic_form.as_p }}
+  </form>
+  </div>
+{% endblock %}
