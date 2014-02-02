@@ -3,8 +3,9 @@
 {% block body %}
   <h2>Create Topic</h2>
   <div class='topic-form'>
-  <form method='POST' action="{% url 'forums:manage:create' %}">{% csrf_token %}
-    {{ topic_form.as_p }}
-  </form>
+    <form method='POST' action="{% url 'forums:manage:create' %}">{% csrf_token %}
+      {{ topic_form.as_p }}
+      <button type='submit' class='btn btn-success'>Create</button>
+    </form>
   </div>
 {% endblock %}
