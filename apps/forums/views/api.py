@@ -47,12 +47,10 @@ def reply_to_topic(request, topic_id):
         reply_form = ReplyForm(request.POST)
         reply_form.topic = topic
         reply_form.author = request.user
-        reply_form.tags = 'reply'
         if reply_form.is_valid:
             reply = reply_form.save(commit=False)
             reply.author = request.user
             reply.topic = topic
-            reply.tags = 'reply'
             reply.save()
             messages.warning(request, "Thank you for your reply. It has been sent for moderation")
             return redirect(topic.get_absolute_url())
@@ -73,10 +71,28 @@ def reply_to_parent(request, parent_id):
     Relies on jQuery's html-handling
     """
     ctx = {}
-    template_name = 'forums/api/reply_form.html'
+    template_name = 'forums/api/reply_to_parent.html'
 
-    ctx['reply_form'] = ReplyForm()
+    reply_form = ReplyForm()
+    ctx['reply_form'] = reply_form
     ctx['parent_id'] = parent_id
+    parent = Reply.objects.get(id=base36_to_int(parent_id))
+    topic = parent.topic
+
+    if request.method == 'POST':
+        reply_form = ReplyForm(request.POST)
+        reply_form.topic = topic
+        reply_form.author = request.user
+        if reply_form.is_valid:
+            reply = reply_form.save(commit=False)
+            reply.author = request.user
+            reply.topic = topic
+            reply.parent = parent
+            reply.status = 'posted'
+            reply.entry = reply.draft
+            reply.save()
+            messages.warning(request, "Thank you for your reply. It has been sent for moderation")
+            return redirect(topic.get_absolute_url())
 
     return render(request, template_name, ctx)
 

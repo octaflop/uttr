@@ -67,7 +67,7 @@ class Reply(TimestampMixin):
     # topic that we're replying to
     topic = models.ForeignKey(Topic)
     # metadata
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
     publish_date = models.DateTimeField(blank=True, null=True)
     # categorization
     status = models.CharField(choices=POST_STATUS, max_length=10, default='draft')
