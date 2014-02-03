@@ -2,9 +2,9 @@
 
 {% block body %}
   <h2>{{ topic.title }}</h2>
-  <div class='topic-intro'>
+  <div class='well topic-intro'>
     {{ topic.content|safe }}
-    <p id='{{ topic.bid }}'><a href='#' class='topic-reply' data-parentid='{{ topic.bid }}'>Reply</a></p>
+    <p id='topic-{{ topic.bid }}'><a href='#' class='topic-reply' data-parentid='{{ topic.bid }}'>Reply</a></p>
   </div>
 
 <div class='replies'>
@@ -12,7 +12,7 @@
     <article data-replyid='{{ reply.bid }}'>
     {{ reply.entry|safe }}
     </article>
-    <p id='{{ reply.bid }}'><a href='#' class='reply' data-parentid='{{ reply.bid }}'>Reply</a></p>
+    <p id='reply-{{ reply.bid }}'><a href='#' class='reply' data-parentid='{{ reply.bid }}'>Reply</a></p>
   {% endfor %}
 </div>
 {% endblock %}
@@ -26,7 +26,19 @@
     console.log(parent_id);
     var reply_topic_url = '/forum/api/reply_topic/' + parent_id;
     $.get(reply_topic_url, function(data) { 
-      $('#'+parent_id).append(data);
+      $('#reply-form').remove();
+      $('#topic-'+parent_id).append(data);
+    });
+  });
+
+  $('.reply').click(function() {
+    var parent_id = $(this).attr('data-parentid');
+    console.log(parent_id);
+    var reply_url = '/forum/api/reply/' + parent_id;
+    $.get(reply_url, function(data) { 
+      console.log(parent_id);
+      $('#reply-form').remove();
+      $('#reply-'+parent_id).append(data);
     });
   });
 </script>
