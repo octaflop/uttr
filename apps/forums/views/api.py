@@ -1,14 +1,17 @@
 # encoding: utf-8
 # api.py
 
+from django.contrib import messages
+from django.shortcuts import redirect, render
+from django.utils.http import base36_to_int
+from django.http import HttpResponse
+
+from forums.models import Topic, Reply
+from forums.forms import ReplyForm
+
 from tastypie.resources import ModelResource
 from tastypie.authentication import ApiKeyAuthentication
 from tastypie.authorization import DjangoAuthorization
-
-from forums.models import Reply
-from forums.forms import ReplyForm
-
-from django.shortcuts import redirect, render
 
 """
 Various functions for AJAX/JS interaction
@@ -35,8 +38,30 @@ def reply_to_topic(request, topic_id):
     ctx = {}
     template_name = 'forums/api/reply_form.html'
 
-    ctx['reply_form'] = ReplyForm()
+    reply_form = ReplyForm()
+    ctx['reply_form'] = reply_form
     ctx['topic_id'] = topic_id
+    topic = Topic.objects.get(id=base36_to_int(topic_id))
+
+    if request.method == 'POST':
+        reply_form = ReplyForm(request.POST)
+        reply_form.topic = topic
+        reply_form.author = request.user
+        reply_form.tags = 'reply'
+        if reply_form.is_valid:
+            reply = reply_form.save(commit=False)
+            reply.author = request.user
+            reply.topic = topic
+            reply.tags = 'reply'
+            reply.save()
+            messages.warning(request, "Thank you for your reply. It has been sent for moderation")
+            return redirect(topic.get_absolute_url())
+
+            # we might have to use a JS return
+            # response = HttpResponse()
+            # response.type = 'text/javascript'
+            # response.write('Success!')
+            # return response
 
     return render(request, template_name, ctx)
 
