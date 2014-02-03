@@ -24,7 +24,9 @@ class ReplyForm(forms.ModelForm):
 
     class Meta:
         model = Reply
-        exclude = ('date_created',)
+        exclude = ('date_created', 'entry', 'author', 
+            'mod_notes', 'topic', 'publish_date',
+            'status', 'post_type', 'is_poll', 'parent_post', 'tags')
 
     def __init__(self, *args, **kwargs):
         super(ReplyForm, self).__init__(*args, **kwargs)

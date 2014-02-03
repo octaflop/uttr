@@ -4,11 +4,30 @@
   <h2>{{ topic.title }}</h2>
   <div class='topic-intro'>
     {{ topic.content|safe }}
+    <p id='{{ topic.bid }}'><a href='#' class='topic-reply' data-parentid='{{ topic.bid }}'>Reply</a></p>
   </div>
 
 <div class='replies'>
   {% for reply in replies %}
+    <article data-replyid='{{ reply.bid }}'>
     {{ reply.entry|safe }}
+    </article>
+    <p id='{{ reply.bid }}'><a href='#' class='reply' data-parentid='{{ reply.bid }}'>Reply</a></p>
   {% endfor %}
 </div>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<script type="text/javascript">
+  // TODO: Move me into a separate file
+  $('.topic-reply').click(function() {
+    var parent_id = $(this).attr('data-parentid');
+    console.log(parent_id);
+    var reply_topic_url = '/forum/api/reply_topic/' + parent_id;
+    $.get(reply_topic_url, function(data) { 
+      $('#'+parent_id).append(data);
+    });
+  });
+</script>
 {% endblock %}

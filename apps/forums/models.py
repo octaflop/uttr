@@ -47,6 +47,10 @@ class Topic(TimestampMixin):
     @property
     def reply_length(self):
         return len(self.reply_set.filter(status='posted'))
+        
+    @property
+    def bid(self):
+        return int_to_base36(self.id)
 
 
 class Reply(TimestampMixin):

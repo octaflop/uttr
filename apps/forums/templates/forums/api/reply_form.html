@@ -1,0 +1,8 @@
+<p>Hello World</p>
+
+<form action="{% url 'forums:api:reply_topic' topic_id=topic_id %}" method='POST'>{% csrf_token %}
+{{ reply_form }}
+<button class='btn btn-success'>
+Reply
+</button>
+</form>

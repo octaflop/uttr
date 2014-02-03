@@ -27,6 +27,7 @@ def topic_create(request):
     ctx['topic_form'] = topic_form
     return render(request, template_name, ctx)
 
+
 def topic_view_by_slug(request, slug):
     """
     redirects to bid-based view
@@ -34,10 +35,12 @@ def topic_view_by_slug(request, slug):
     topic = Topic.objects.get(slug=slug)
     return redirect(reverse('forums:view', kwargs={'bid': int_to_base36(topic.id)}))
 
+
 @staff_member_required
 def topic_edit(request, bid):
     """
     Edit the topic
+    NOT_IMPLEMENTED
     """
     ctx = {}
     template_name = 'forums/topic_view.html'

@@ -18,9 +18,15 @@ class TopicAdmin(admin.ModelAdmin):
     form = TopicAdminForm
 
 
-class ReplyAdmin(admin.ModelAdmin):
+class ReplyAdminForm(forms.ModelForm):
+    draft = forms.CharField(widget=CKEditorWidget())
+
     class Meta:
         model = Reply
+        exclude = ('date_created',)
+
+class ReplyAdmin(admin.ModelAdmin):
+    form = ReplyAdminForm
 
 
 admin.site.register(Topic, TopicAdmin)
