@@ -1,0 +1,21 @@
+{% extends 'forums/_forum_base.html' %}
+
+{% block body %}
+  <h2>Create Topic</h2>
+  <div class='topic-form'>
+    <form method='POST' action="{% url 'forums:manage:create' %}">{% csrf_token %}
+      {{ topic_form.as_p }}
+      <button type='submit' class='btn btn-success'>Create</button>
+    </form>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'admin/js/urlify.js' %}"></script>
+<script type="text/javascript">
+document.getElementById("id_title").onkeyup = function() {
+    var e = document.getElementById("id_slug");
+    if (!e._changed) { e.value = URLify(document.getElementById("id_title").value, 50); }
+}
+</script>
+{% endblock %}

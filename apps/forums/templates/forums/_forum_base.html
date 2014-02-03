@@ -1,7 +1,12 @@
 {% extends 'uttr/_base.html' %}
+{% load staticfiles %}
 {% block title %}
 {{ topic.title }}
 {% endblock %}
 
 {% block body %}
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
 {% endblock %}

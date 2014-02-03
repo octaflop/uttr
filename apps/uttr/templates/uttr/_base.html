@@ -33,7 +33,7 @@
         {% for message in messages %}
         <div class="alert{% if message.tags %} alert-{{ message.tags }}{% endif %} alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        {{ message }}
+        {{ message|safe }}
         </div>
         {% endfor %}
     </ul>
@@ -53,9 +53,9 @@
         </div>
     </footer>
 
-    {% block extra_js %}
-    {% endblock %}
     <script type="text/javascript" src="{% static 'bower_components/jquery/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    {% block extra_js %}
+    {% endblock %}
   </body>
 </html>
